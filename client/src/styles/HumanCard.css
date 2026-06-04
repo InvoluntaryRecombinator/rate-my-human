@@ -1,0 +1,42 @@
+.human-card {
+  border: 1px solid #e5e4e7;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 220px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.human-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #aa3bff;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+}
+
+.human-name {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #08060d;
+}
+
+.human-role {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: #6b6375;
+}
+
+.human-rating {
+  font-size: 1.25rem;
+  color: #aa3bff;
+  letter-spacing: 2px;
+}
