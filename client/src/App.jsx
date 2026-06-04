@@ -1,107 +1,93 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import HumanCard from './components/HumanCard';
 import HumanProfile from './components/HumanProfile';
 import ReviewForm from './components/ReviewForm';
 import './App.css';
 
-const HUMANS = [
-  {
-    name: 'Michael',
-    bio: 'Frontend engineer with a passion for pixel-perfect UIs and blaming CSS.',
-    knownFor: 'Aggressive use of flexbox',
-    averageRating: 4,
-    reviewCount: 2,
-    reviews: [
-      {
-        applianceName: 'Michael',
-        applianceType: 'Toaster',
-        rating: 4,
-        title: 'Gets the job done, eventually',
-        body: 'Runs hot on deadlines but produces acceptable output. Prone to overheating when CSS is involved.',
-        mood: 'Overheats',
-      },
-      {
-        applianceName: 'Michael',
-        applianceType: 'Microwave',
-        rating: 4,
-        title: 'Loud but effective',
-        body: 'Makes a lot of noise about responsive design but ultimately delivers a warm result.',
-        mood: 'Loud-Motor',
-      },
-    ],
-  },
-  {
-    name: 'Jordan',
-    bio: 'Backend architect and database whisperer. Speaks fluent SQL and sarcasm.',
-    knownFor: 'Writing migrations that actually work',
-    averageRating: 5,
-    reviewCount: 2,
-    reviews: [
-      {
-        applianceName: 'Jordan',
-        applianceType: 'Refrigerator',
-        rating: 5,
-        title: 'Cold, efficient, reliable',
-        body: 'Keeps everything running smoothly at all times. Never loses data, rarely loses composure.',
-        mood: 'Cold-Personality',
-      },
-      {
-        applianceName: 'Jordan',
-        applianceType: 'Dishwasher',
-        rating: 5,
-        title: "Cleans up everyone's messes",
-        body: 'Silently fixes bugs introduced by teammates and asks for nothing in return.',
-        mood: 'Passive-Aggressive',
-      },
-    ],
-  },
-  {
-    name: 'Phil',
-    bio: 'Full-stack connector. Wires the frontend to the backend and prays nothing breaks.',
-    knownFor: 'Making fetch() happen',
-    averageRating: 3,
-    reviewCount: 2,
-    reviews: [
-      {
-        applianceName: 'Phil',
-        applianceType: 'Microwave',
-        rating: 3,
-        title: 'Intermittent connectivity issues',
-        body: 'Sometimes the API calls go through. Sometimes they do not. Phil is investigating.',
-        mood: 'Flickering',
-      },
-      {
-        applianceName: 'Phil',
-        applianceType: 'Toaster',
-        rating: 3,
-        title: 'Mostly operational',
-        body: 'Handles the wiring competently but occasionally toasts the wrong endpoint.',
-        mood: 'Crossed-Wires',
-      },
-    ],
-  },
-];
-
 export default function App() {
-  const [selectedHuman, setSelectedHuman] = useState(null);
+  // 1. Homepage States
+  const [humans, setHumans] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // 2. Profile Detail States (✨ NEW)
+  const [selectedHumanId, setSelectedHumanId] = useState(null); // Tracks the ID of clicked human
+  const [selectedHumanDetails, setSelectedHumanDetails] = useState(null); // Stores deep database profile
+  const [profileLoading, setProfileLoading] = useState(false); // Tracks the profile fetch status
+
+  // Fetch all humans for the homepage grid
+  useEffect(() => {
+    fetch('/api/humans')
+      .then((res) => res.json())
+      .then((data) => {
+        setHumans(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching humans:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  // ✨ NEW: Fetch specific human details whenever a user clicks "View Case"
+  useEffect(() => {
+    // If no human ID is selected, clear out the details and stop
+    if (!selectedHumanId) {
+      setSelectedHumanDetails(null);
+      return;
+    }
+
+    setProfileLoading(true);
+
+    // Hit Jordan's specific human endpoint (e.g., /api/humans/3)
+    fetch(`/api/humans/${selectedHumanId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSelectedHumanDetails(data);
+        setProfileLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching deep human profile:', err);
+        setProfileLoading(false);
+      });
+  }, [selectedHumanId]); // This block fires automatically whenever selectedHumanId changes
 
   return (
     <>
       <Header />
       <ReviewForm />
-      {selectedHuman ? (
-        <HumanProfile
-          {...selectedHuman}
-          onBack={() => setSelectedHuman(null)}
-        />
+      
+      {/* Homepage Loading State */}
+      {loading ? (
+        <div style={{ textAlign: 'center', margin: '40px', fontSize: '18px', color: '#ec4899' }}>
+          🔄 Locating misbehaving humans in the database...
+        </div>
+      ) : selectedHumanId ? (
+        /* If a human ID is selected, handle the profile view */
+        profileLoading ? (
+          <div style={{ textAlign: 'center', margin: '40px', fontSize: '18px', color: '#ec4899' }}>
+            📂 Pulling incident reports and appliance testimonies...
+          </div>
+        ) : selectedHumanDetails ? (
+          <HumanProfile
+            {...selectedHumanDetails}
+            onBack={() => setSelectedHumanId(null)} // Resetting ID takes us back to grid
+          />
+        ) : (
+          <div style={{ textAlign: 'center', margin: '40px', color: 'red' }}>
+            ⚠️ Failed to load profile data.
+            <button onClick={() => setSelectedHumanId(null)}>Go Back</button>
+          </div>
+        )
       ) : (
+        /* Homepage Grid View */
         <main className="card-grid">
-          {HUMANS.map((h) => (
+          {humans.map((h) => (
             <HumanCard
-              key={h.name}
+              key={h.id || h.name}
               {...h}
-              onView={() => setSelectedHuman(h)}
+              // ✨ Updated: Click passes the unique database ID instead of the whole object
+              onView={() => setSelectedHumanId(h.id)} 
             />
           ))}
         </main>
