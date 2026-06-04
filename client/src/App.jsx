@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import HumanCard from './components/HumanCard';
+import ReviewForm from './components/ReviewForm';
 import './App.css';
 
 const HUMANS = [
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <>
       <Header />
+      <ReviewForm />
       <main className="card-grid">
         {HUMANS.map((h) => (
           <HumanCard key={h.name} {...h} />
