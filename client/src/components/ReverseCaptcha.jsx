@@ -14,7 +14,6 @@ export default function ReverseCaptcha({ onPass, onFail }) {
   // validation console states
   const [isValidating, setIsValidating] = useState(false);
   const [consoleLogs, setConsoleLogs] = useState([]);
-  const [activeLogIndex, setActiveLogIndex] = useState(0);
 
   useEffect(() => {
     fetch('/api/captcha/questions')

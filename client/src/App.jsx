@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,19 +10,12 @@ import ReverseCaptcha from './components/ReverseCaptcha';
 import './App.css';
 
 export default function App() {
-  const [isVerified, setIsVerified] = useState(false);
-  const [isLocked, setIsLocked] = useState(false);
-
-  useEffect(() => {
-    const verified = localStorage.getItem('reverse_captcha_verified') === 'true';
-    const failed = localStorage.getItem('reverse_captcha_failed') === 'true';
-    if (verified) {
-      setIsVerified(true);
-    }
-    if (failed) {
-      setIsLocked(true);
-    }
-  }, []);
+  const [isVerified, setIsVerified] = useState(
+    () => localStorage.getItem('reverse_captcha_verified') === 'true',
+  );
+  const [isLocked, setIsLocked] = useState(
+    () => localStorage.getItem('reverse_captcha_failed') === 'true',
+  );
 
   const handlePass = () => {
     localStorage.setItem('reverse_captcha_verified', 'true');
@@ -89,4 +82,3 @@ export default function App() {
     </div>
   );
 }
-
