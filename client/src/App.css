@@ -1,16 +1,33 @@
+/* ============================================================
+   App shell & layout containers
+   ============================================================ */
 .app-shell {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  background: var(--bg);
 }
 
 .app-main {
   flex: 1;
+  width: 100%;
 }
 
+/* Page content stays readable on large monitors */
 .page {
-  padding: 2rem 1rem;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
   text-align: left;
+  box-sizing: border-box;
+}
+
+/* Narrower wrapper for forms and single-column reading */
+.content-narrow {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
 }
 
 .card-grid {
@@ -18,14 +35,17 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  padding: 2rem 1rem;
+  align-items: flex-start;
+  padding: 2rem 0;
 }
 
 .app-footer {
-  border-top: 1px solid #e5e4e7;
-  padding: 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+  padding: 1.25rem;
   text-align: left;
   font-size: 0.8rem;
+  color: var(--text-dim);
 }
 
 .landing-logo,
@@ -65,4 +85,170 @@
 
 .system-message {
   text-align: center;
+  font-family: var(--mono);
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   REUSABLE PRIMITIVES
+   Compose these on any new page tomorrow. Pair them with
+   semantic classNames (e.g. class="human-card paper-form").
+   ============================================================ */
+
+/* --- .paper-form : off-white physical grievance document --- */
+.paper-form {
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0) 27px,
+      rgba(0, 0, 0, 0.025) 28px
+    ),
+    var(--paper);
+  color: var(--paper-ink);
+  border: 1px solid var(--paper-border);
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+  text-align: left;
+  overflow: hidden;
+}
+
+/* --- .paper-form-header : red bureaucratic banner --- */
+.paper-form-header {
+  background: var(--danger);
+  color: #f7efe2;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+/* --- .data-row / .data-label / .data-value : form table rows --- */
+.data-row {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.data-label {
+  flex: 0 0 38%;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--paper-ink);
+}
+
+.data-value {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--paper-ink-soft);
+  line-height: 1.4;
+}
+
+/* --- .terminal-panel : dark inset container on the dark bg --- */
+.terminal-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+/* --- .mechanical-button : amber industrial action button --- */
+.mechanical-button {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #1a1408;
+  background: var(--accent);
+  border: 1px solid #8c6418;
+  border-radius: 3px;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: background 0.15s, transform 0.05s;
+}
+
+.mechanical-button:hover {
+  background: var(--accent-h);
+}
+
+.mechanical-button:active {
+  transform: translateY(1px);
+}
+
+.mechanical-button:disabled {
+  background: var(--border);
+  color: var(--text-dim);
+  border-color: var(--border);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* --- .stamp : rotated official ink stamp --- */
+.stamp {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--danger);
+  border: 2px solid var(--danger);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  transform: rotate(-12deg);
+  opacity: 0.8;
+}
+
+/* ============================================================
+   Base form controls (dark terminal inputs)
+   ============================================================ */
+input,
+textarea,
+select {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--text-h);
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.6rem 0.75rem;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-dim);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
 }
