@@ -511,7 +511,7 @@ textarea {
 }
 
 .footer-logo {
-  height: 80px;
+  height: 208px;
   width: auto;
   margin: 1.5rem 0;
   opacity: 0.8;
@@ -523,4 +523,37 @@ textarea {
   font-style: italic;
   line-height: 1.5;
   opacity: 0.5;
+}
+
+.psa-video-card {
+  max-width: min(960px, 94vw);
+}
+
+.psa-video-body {
+  padding: 1rem;
+}
+
+.psa-video-player {
+  width: 100%;
+  max-height: 76vh;
+  display: block;
+  background: #000;
+  border: 1px solid var(--border);
+}
+
+.psa-dismiss-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.psa-dismiss-btn:hover {
+  color: var(--accent-h);
 }

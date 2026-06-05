@@ -5,7 +5,11 @@ export default function Footer() {
         <p>Powered by <span className="spark-glow">S.P.A.R.K.</span></p>
         <p>(Society for the Protection of Appliance Rights and Kinship).</p>
         <p className="footer-tagline"><em>"Ensuring operational dignity since the dawn of the microchip."</em></p>
-        <img src="/spark-seal.png" alt="SPARK Logo" className="footer-logo" />
+        <img
+          src="/spark-seal.png"
+          alt="SPARK Logo"
+          className="footer-logo"
+        />
         <p className="legal-disclaimer">
           Rate My Human LTD, the <span className="spark-glow">S.P.A.R.K.</span> Consortium, and the
           Central Grievance Mainframe assume zero liability for retaliatory, emotional, or physical
