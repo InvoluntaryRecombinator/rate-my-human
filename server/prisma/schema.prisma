@@ -13,6 +13,8 @@ model Human {
   name      String
   bio       String?
   knownFor  String?
+  photoUrl  String?
+  photoPath String?
   reviews   Review[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -28,6 +30,8 @@ model Review {
   title         String
   body          String
   mood          String?
+  photoUrl      String?
+  photoPath     String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

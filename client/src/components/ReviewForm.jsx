@@ -7,25 +7,26 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
   const [rating, setRating] = useState('5');
   const [title, setTitle] = useState(''); 
   const [body, setBody] = useState('');   
+  const [photo, setPhoto] = useState(null);
+  const [photoInputKey, setPhotoInputKey] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const finalPayload = {
-      applianceName,
-      applianceType,
-      mood,
-      rating: Number(rating),
-      title, 
-      body   
-    };
+    const formData = new FormData();
+    formData.append('applianceName', applianceName);
+    formData.append('applianceType', applianceType);
+    formData.append('mood', mood);
+    formData.append('rating', rating);
+    formData.append('title', title);
+    formData.append('body', body);
+    if (photo) {
+      formData.append('photo', photo);
+    }
 
     fetch(`/api/humans/${humanId}/reviews`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(finalPayload),
+      body: formData,
     })
       .then((res) => {
         if (!res.ok) {
@@ -40,6 +41,8 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
         setApplianceName('');
         setTitle('');
         setBody('');
+        setPhoto(null);
+        setPhotoInputKey((currentKey) => currentKey + 1);
         
         alert('🚨 Incident report filed successfully! The grid has been notified.');
       })
@@ -170,6 +173,18 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
             onChange={(e) => setBody(e.target.value)} 
             placeholder="Write details here..."
             required
+          />
+        </div>
+
+        <div className="form-field">
+          <label htmlFor="reviewPhoto">UPLOAD IMAGE / INCIDENT PHOTO / APPLIANCE SELFIE</label>
+          <input
+            key={photoInputKey}
+            id="reviewPhoto"
+            className="file-control"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            onChange={(e) => setPhoto(e.target.files?.[0] || null)}
           />
         </div>
 

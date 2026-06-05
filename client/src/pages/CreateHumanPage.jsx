@@ -5,6 +5,7 @@ export default function CreateHumanPage() {
   const [name, setName] = useState('');
   const [habitat, setHabitat] = useState('');
   const [bio, setBio] = useState('');
+  const [photo, setPhoto] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -12,16 +13,17 @@ export default function CreateHumanPage() {
     event.preventDefault();
     setError('');
 
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('habitat', habitat);
+    formData.append('bio', bio);
+    if (photo) {
+      formData.append('photo', photo);
+    }
+
     fetch('/api/humans', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        habitat,
-        bio,
-      }),
+      body: formData,
     })
       .then((res) => {
         if (!res.ok) {
@@ -77,7 +79,17 @@ export default function CreateHumanPage() {
           />
         </div>
 
-        <button className="upload-placeholder mechanical-button" type="button" disabled>[ Upload Photo ]</button>
+        <div className="form-field">
+          <label htmlFor="humanPhoto">PROFILE PHOTO / OFFICIAL MUGSHOT</label>
+          <input
+            id="humanPhoto"
+            className="file-control"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            onChange={(event) => setPhoto(event.target.files?.[0] || null)}
+          />
+        </div>
+
         <button className="form-submit mechanical-button" type="submit">+ INITIALIZE NEW HUMAN PROFILE</button>
       </form>
 

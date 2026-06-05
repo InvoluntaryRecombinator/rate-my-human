@@ -63,12 +63,13 @@ export default function ProfilePage() {
             <div className="profile-layout">
               <HumanProfile
                 id={human.id}
-                name={human.name}
-                bio={human.bio || 'NO BIOGRAPHICAL RECORD ON FILE'}
-                knownFor={human.knownFor || 'UNREGISTERED'}
-                averageRating={averageRating}
-                reviewCount={reviews.length}
-              />
+              name={human.name}
+              bio={human.bio || 'NO BIOGRAPHICAL RECORD ON FILE'}
+              knownFor={human.knownFor || 'UNREGISTERED'}
+              photoUrl={human.photoUrl}
+              averageRating={averageRating}
+              reviewCount={reviews.length}
+            />
             </div>
 
             <section className="historical-logs">

@@ -271,6 +271,24 @@ textarea {
   resize: vertical;
 }
 
+.file-control {
+  cursor: pointer;
+}
+
+.file-control::file-selector-button {
+  margin-right: 0.75rem;
+  border: 1px solid rgba(191, 151, 64, 0.7);
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--bg-deep);
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+}
+
 /* ============================================================
    Page compositions (reuse primitives + tokens)
    ============================================================ */

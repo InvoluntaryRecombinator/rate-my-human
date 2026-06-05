@@ -8,7 +8,7 @@
 .hp-hero {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 1.5rem;
   padding: 1.25rem 1.5rem 1.5rem;
 }
 
@@ -26,6 +26,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.hp-avatar-photo {
+  width: 264px;
+  height: 312px;
+  border-radius: 3px;
+  background: var(--paper);
+}
+
+.hp-avatar-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.18) contrast(0.92) saturate(0.85);
 }
 
 .hp-info {
