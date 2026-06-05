@@ -1,106 +1,103 @@
+/* HumanCard composes the .paper-form primitive (see App.css). */
 .human-card {
-  border: 1px solid #e5e4e7;
-  border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;
-  width: 220px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  width: 300px;
   display: flex;
   flex-direction: column;
+}
+
+.human-card:nth-child(3n + 1) {
+  transform: rotate(-1.2deg);
+}
+.human-card:nth-child(3n + 2) {
+  transform: rotate(0.6deg);
+}
+.human-card:nth-child(3n + 3) {
+  transform: rotate(1.4deg);
+}
+
+.human-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  transition: transform 0.18s ease;
+  z-index: 2;
+}
+
+.human-card-body {
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.human-card-seal-row {
+  display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.75rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid var(--paper-ink);
+  margin-bottom: 0.5rem;
 }
 
 .human-avatar {
-  width: 56px;
-  height: 56px;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: #aa3bff;
-  color: #fff;
+  background: var(--paper-2);
+  border: 2px solid var(--paper-ink);
+  color: var(--paper-ink);
+  font-family: var(--heading);
   font-size: 1.5rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.4rem;
+}
+
+.human-card-ident {
+  display: flex;
+  flex-direction: column;
+}
+
+.human-subject-id {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--paper-ink-soft);
 }
 
 .human-name {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #08060d;
-}
-
-.human-bio {
-  margin: 0;
-  font-size: 0.8rem;
-  color: #6b6375;
-  line-height: 1.4;
+  font-family: var(--heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--paper-ink);
 }
 
 .human-known-for {
-  margin: 0;
-  font-size: 0.78rem;
-  font-style: italic;
-  color: #aa3bff;
+  font-style: normal;
+  color: var(--paper-ink-soft);
+}
+
+.human-bio {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .human-rating {
-  font-size: 1.1rem;
-  color: #aa3bff;
+  color: var(--paper-ink);
   letter-spacing: 2px;
 }
 
 .human-review-count {
-  margin: 0;
-  font-size: 0.75rem;
-  color: #6b6375;
+  color: var(--paper-ink-soft);
 }
 
-.human-card-btn {
-  margin-top: 0.65rem;
-  padding: 0.45rem 1.1rem;
-  background: #aa3bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.15s;
-}
-
-.human-card-btn:hover {
-  opacity: 0.85;
-}
-
-@media (prefers-color-scheme: dark) {
-  .human-card {
-    background: #16171d;
-    border-color: #2e303a;
-  }
-
-  .human-avatar {
-    background: #c084fc;
-  }
-
-  .human-name {
-    color: #f3f4f6;
-  }
-
-  .human-bio,
-  .human-review-count {
-    color: #9ca3af;
-  }
-
-  .human-known-for,
-  .human-rating {
-    color: #c084fc;
-  }
-
-  .human-card-btn {
-    background: #c084fc;
-  }
+.human-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }

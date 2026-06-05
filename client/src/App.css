@@ -1,16 +1,33 @@
+/* ============================================================
+   App shell & layout containers
+   ============================================================ */
 .app-shell {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  background: var(--bg);
 }
 
 .app-main {
   flex: 1;
+  width: 100%;
 }
 
+/* Page content stays readable on large monitors */
 .page {
-  padding: 2rem 1rem;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
   text-align: left;
+  box-sizing: border-box;
+}
+
+/* Narrower wrapper for forms and single-column reading */
+.content-narrow {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
 }
 
 .card-grid {
@@ -18,14 +35,17 @@
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  padding: 2rem 1rem;
+  align-items: flex-start;
+  padding: 2rem 0;
 }
 
 .app-footer {
-  border-top: 1px solid #e5e4e7;
-  padding: 1rem;
-  text-align: left;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+  padding: 2rem 1.25rem;
+  text-align: center;
   font-size: 0.8rem;
+  color: var(--text-dim);
 }
 
 .landing-logo,
@@ -65,4 +85,424 @@
 
 .system-message {
   text-align: center;
+  font-family: var(--mono);
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   REUSABLE PRIMITIVES
+   Compose these on any new page tomorrow. Pair them with
+   semantic classNames (e.g. class="human-card paper-form").
+   ============================================================ */
+
+/* --- .paper-form : off-white physical grievance document --- */
+.paper-form {
+  position: relative;
+  background-color: var(--paper);
+  background-image:
+    /* ruled bureaucratic lines (faint blue-grey) */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 27px,
+      rgba(43, 58, 82, 0.1) 27px,
+      rgba(43, 58, 82, 0.1) 28px
+    ),
+    /* grimy corner shading */
+    radial-gradient(circle at 18% 12%, rgba(0, 0, 0, 0.05), transparent 55%),
+    radial-gradient(circle at 88% 85%, rgba(86, 66, 32, 0.06), transparent 60%),
+    /* fine paper-grain noise */
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.013) 0,
+      rgba(0, 0, 0, 0.013) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  color: var(--paper-ink);
+  border: 1px solid var(--paper-border);
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+  text-align: left;
+  overflow: hidden;
+}
+
+/* --- .paper-form-header : muted institutional banner --- */
+.paper-form-header {
+  background: var(--form-header);
+  color: var(--form-header-ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.35);
+}
+
+/* --- .data-row / .data-label / .data-value : form table rows --- */
+.data-row {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.data-row:last-child {
+  border-bottom: none;
+}
+
+.data-label {
+  flex: 0 0 38%;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--paper-ink);
+}
+
+.data-value {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--paper-ink-soft);
+  line-height: 1.4;
+}
+
+/* --- .terminal-panel : dark inset container on the dark bg --- */
+.terminal-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+/* --- .mechanical-button : amber industrial action button --- */
+.mechanical-button {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #1a1408;
+  background: var(--accent);
+  border: 1px solid #8c6418;
+  border-radius: 3px;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: background 0.15s, transform 0.05s;
+}
+
+.mechanical-button:hover {
+  background: var(--accent-h);
+}
+
+.mechanical-button:active {
+  transform: translateY(1px);
+}
+
+.mechanical-button:disabled {
+  background: var(--border);
+  color: var(--text-dim);
+  border-color: var(--border);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* --- .stamp : rotated official ink stamp --- */
+.stamp {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  border: 2px solid var(--stamp);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  transform: rotate(-12deg);
+  opacity: 0.7;
+}
+
+/* --- .spark-glow : electrified amber brand text --- */
+.spark-glow {
+  text-shadow: 0 0 8px rgba(200, 148, 42, 0.8);
+}
+
+/* ============================================================
+   Base form controls (dark terminal inputs)
+   ============================================================ */
+input,
+textarea,
+select {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--text-h);
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.6rem 0.75rem;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-dim);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ============================================================
+   Page compositions (reuse primitives + tokens)
+   ============================================================ */
+
+/* --- Landing --- */
+.page-landing {
+  padding-top: 3rem;
+}
+
+.landing-logo {
+  font-family: var(--heading);
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(191, 151, 64, 0.22);
+  margin-bottom: 0.25rem;
+}
+
+.landing-entry h1 {
+  font-size: clamp(1.05rem, 2.4vw, 1.6rem);
+  letter-spacing: 0.18em;
+  color: var(--text-h);
+  margin: 0.4rem 0 0.75rem;
+}
+
+.landing-entry > p {
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.landing-search {
+  max-width: 580px;
+  margin: 1.5rem auto 0;
+}
+
+.landing-or {
+  font-family: var(--mono);
+  color: var(--text-dim);
+  letter-spacing: 0.2em;
+  margin: 1.25rem 0 0.85rem;
+}
+
+.landing-create-link {
+  align-self: center;
+}
+
+.trending-section {
+  margin-top: 3.5rem;
+}
+
+.trending-section h2 {
+  color: var(--accent);
+  letter-spacing: 0.15em;
+}
+
+/* --- Directory --- */
+.page-directory h1 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.directory-result {
+  align-items: flex-start;
+  padding: 1.1rem 1.25rem;
+}
+
+.directory-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #1a1408;
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.directory-result-body h2 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.directory-result-body h2 a {
+  color: var(--text-h);
+  text-decoration: none;
+}
+
+.directory-result-body h2 a:hover {
+  color: var(--accent-h);
+}
+
+.directory-result-body p {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.directory-stars {
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+/* --- Create human + Review form (terminal input consoles) --- */
+.page-create-human h1 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.create-human-form,
+.review-form-panel {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.form-field label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.review-form-heading {
+  margin: 0 0 1rem;
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+/* --- Profile page : two-column "the file" vs "the terminal" --- */
+.page-profile .profile-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.page-profile .profile-layout {
+  display: block;
+}
+
+.profile-col-file {
+  min-width: 0;
+}
+
+.profile-col-file .human-profile,
+.profile-col-file .review-card {
+  max-width: none;
+  margin: 0;
+}
+
+.profile-col-terminal {
+  position: sticky;
+  top: 1.5rem;
+  min-width: 0;
+}
+
+.profile-col-terminal .review-form-panel {
+  max-width: none;
+  margin: 0;
+}
+
+.historical-logs {
+  margin-top: 2rem;
+}
+
+.historical-logs h2 {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .page-profile .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-col-terminal {
+    position: static;
+  }
+}
+
+/* --- Footer --- */
+.footer-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-inner p + p {
+  margin-top: 0.25rem;
+}
+
+.footer-tagline {
+  font-style: italic;
+}
+
+.footer-logo {
+  height: 80px;
+  width: auto;
+  margin: 1.5rem 0;
+  opacity: 0.8;
+}
+
+.legal-disclaimer {
+  max-width: 600px;
+  font-size: 0.65rem;
+  font-style: italic;
+  line-height: 1.5;
+  opacity: 0.5;
 }

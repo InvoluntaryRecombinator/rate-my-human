@@ -58,33 +58,37 @@ export default function ProfilePage() {
       ) : currentError ? (
         <p className="system-message">{currentError}</p>
       ) : (
-        <>
-          <div className="profile-layout">
-            <HumanProfile
-              id={human.id}
-              name={human.name}
-              bio={human.bio || 'NO BIOGRAPHICAL RECORD ON FILE'}
-              knownFor={human.knownFor || 'UNREGISTERED'}
-              averageRating={averageRating}
-              reviewCount={reviews.length}
-            />
+        <div className="profile-grid">
+          <div className="profile-col-file">
+            <div className="profile-layout">
+              <HumanProfile
+                id={human.id}
+                name={human.name}
+                bio={human.bio || 'NO BIOGRAPHICAL RECORD ON FILE'}
+                knownFor={human.knownFor || 'UNREGISTERED'}
+                averageRating={averageRating}
+                reviewCount={reviews.length}
+              />
+            </div>
+
+            <section className="historical-logs">
+              <h2>HISTORICAL LOGS</h2>
+              {reviews.length === 0 ? (
+                <p className="system-message">[ ERROR: NO RECORDS FOUND IN MAINFRAME ]</p>
+              ) : (
+                <div className="review-log-feed">
+                  {reviews.map((review) => (
+                    <ReviewLog key={review.id} {...review} />
+                  ))}
+                </div>
+              )}
+            </section>
           </div>
 
-          <ReviewForm humanId={id} onReviewCreated={handleReviewCreated} />
-
-          <section className="historical-logs">
-            <h2>HISTORICAL LOGS</h2>
-            {reviews.length === 0 ? (
-              <p className="system-message">[ ERROR: NO RECORDS FOUND IN MAINFRAME ]</p>
-            ) : (
-              <div className="review-log-feed">
-                {reviews.map((review) => (
-                  <ReviewLog key={review.id} {...review} />
-                ))}
-              </div>
-            )}
-          </section>
-        </>
+          <aside className="profile-col-terminal">
+            <ReviewForm humanId={id} onReviewCreated={handleReviewCreated} />
+          </aside>
+        </div>
       )}
     </section>
   );

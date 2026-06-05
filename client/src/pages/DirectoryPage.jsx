@@ -59,7 +59,7 @@ export default function DirectoryPage() {
       ) : (
         <div className="directory-results">
           {filteredHumans.map((human, index) => (
-            <article className="directory-result" key={human.id}>
+            <article className="directory-result terminal-panel" key={human.id}>
               <Link className="directory-avatar" to={`/human/${human.id}`}>
                 {human.name?.[0]}
               </Link>

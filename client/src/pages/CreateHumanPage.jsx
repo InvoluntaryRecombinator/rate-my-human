@@ -41,7 +41,7 @@ export default function CreateHumanPage() {
   return (
     <section className="page page-create-human">
       <h1>INITIALIZE NEW HUMAN PROFILE</h1>
-      <form className="create-human-form" onSubmit={handleSubmit}>
+      <form className="create-human-form terminal-panel" onSubmit={handleSubmit}>
         <div className="form-field">
           <label htmlFor="humanName">ALIAS</label>
           <input
@@ -77,8 +77,8 @@ export default function CreateHumanPage() {
           />
         </div>
 
-        <button className="upload-placeholder" type="button" disabled>[ Upload Photo ]</button>
-        <button className="form-submit" type="submit">+ INITIALIZE NEW HUMAN PROFILE</button>
+        <button className="upload-placeholder mechanical-button" type="button" disabled>[ Upload Photo ]</button>
+        <button className="form-submit mechanical-button" type="submit">+ INITIALIZE NEW HUMAN PROFILE</button>
       </form>
 
       {error && <p className="system-message">{error}</p>}

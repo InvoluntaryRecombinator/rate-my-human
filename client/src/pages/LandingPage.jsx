@@ -53,11 +53,11 @@ export default function LandingPage() {
             placeholder="Target ALIAS, IP Address, or Habitat..."
             aria-label="Target ALIAS, IP Address, or Habitat"
           />
-          <button type="submit">SEARCH</button>
+          <button className="mechanical-button" type="submit">SEARCH</button>
         </form>
 
         <div className="landing-or">- OR -</div>
-        <Link className="landing-create-link" to="/human/new">+ INITIALIZE NEW HUMAN PROFILE</Link>
+        <Link className="landing-create-link mechanical-button" to="/human/new">+ INITIALIZE NEW HUMAN PROFILE</Link>
       </section>
 
       <section className="trending-section">
