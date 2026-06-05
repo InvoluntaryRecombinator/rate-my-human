@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import '../styles/Header.css';
 
-export default function Header() {
+export default function Header({ onOpenPSA }) {
   return (
     <header className="header">
       <nav className="header-nav" aria-label="Primary navigation">
@@ -9,10 +9,17 @@ export default function Header() {
         <div className="header-links">
           <NavLink to="/directory">directory</NavLink>
           <NavLink to="/human/new">+ add human</NavLink>
+          <button className="header-psa-link" type="button" onClick={onOpenPSA}>
+            ARE YOU SUFFERING FROM APPLIANCE ABUSE?
+          </button>
         </div>
         <div className="header-aside">
           <span className="header-sub">Powered by <span className="spark-glow">S.P.A.R.K.</span></span>
-          <img src="/spark-man.png" alt="SPARK Representative" className="header-seal" />
+          <img
+            src="/spark-man.png"
+            alt="SPARK Representative"
+            className="header-seal"
+          />
         </div>
       </nav>
     </header>

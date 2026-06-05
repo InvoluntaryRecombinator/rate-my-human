@@ -7,9 +7,11 @@ import DirectoryPage from './pages/DirectoryPage';
 import CreateHumanPage from './pages/CreateHumanPage';
 import ProfilePage from './pages/ProfilePage';
 import ReverseCaptcha from './components/ReverseCaptcha';
+import PSAVideoModal from './components/PSAVideoModal';
 import './App.css';
 
 export default function App() {
+  const [showPSA, setShowPSA] = useState(false);
   const [isVerified, setIsVerified] = useState(
     () => localStorage.getItem('reverse_captcha_verified') === 'true',
   );
@@ -69,7 +71,10 @@ export default function App() {
       {!isVerified && (
         <ReverseCaptcha onPass={handlePass} onFail={handleFail} />
       )}
-      <Header />
+      {showPSA && (
+        <PSAVideoModal onClose={() => setShowPSA(false)} />
+      )}
+      <Header onOpenPSA={() => setShowPSA(true)} />
       <main className="app-main">
         <Routes>
           <Route path="/" element={<LandingPage />} />
