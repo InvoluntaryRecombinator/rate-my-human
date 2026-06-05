@@ -19,7 +19,7 @@ function formatLogDate(createdAt) {
   }).format(new Date(createdAt));
 }
 
-export default function ReviewLog({ applianceName, applianceType, rating, title, body, mood, createdAt }) {
+export default function ReviewLog({ applianceName, applianceType, photoUrl, rating, title, body, mood, createdAt }) {
   const logDate = formatLogDate(createdAt);
 
   return (
@@ -29,7 +29,13 @@ export default function ReviewLog({ applianceName, applianceType, rating, title,
       </div>
       <div className="rc-body-wrap">
         <div className="rc-header">
-          <div className="rc-avatar">{applianceName?.[0]}</div>
+          <div className={photoUrl ? 'rc-avatar rc-avatar-photo' : 'rc-avatar'}>
+            {photoUrl ? (
+              <img src={photoUrl} alt={`${applianceName} incident`} />
+            ) : (
+              applianceName?.[0]
+            )}
+          </div>
           <div className="rc-meta">
             <span className="rc-appliance-name">{applianceName} | Mood: {mood || 'Unspecified'}</span>
             <span className="rc-appliance-type">{applianceType}</span>

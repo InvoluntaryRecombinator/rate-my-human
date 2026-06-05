@@ -9,7 +9,7 @@ function Stars({ rating }) {
   );
 }
 
-export default function HumanProfile({ id, name, bio, knownFor, averageRating, reviewCount }) {
+export default function HumanProfile({ id, name, bio, knownFor, photoUrl, averageRating, reviewCount }) {
   const subjectId = `S-00${id}`;
 
   return (
@@ -18,7 +18,13 @@ export default function HumanProfile({ id, name, bio, knownFor, averageRating, r
         SUBJECT DOSSIER — FILE {subjectId}
       </div>
       <div className="hp-hero">
-        <div className="hp-avatar">{name?.[0]}</div>
+        <div className={photoUrl ? 'hp-avatar hp-avatar-photo' : 'hp-avatar'}>
+          {photoUrl ? (
+            <img src={photoUrl} alt={`${name} profile`} />
+          ) : (
+            name?.[0]
+          )}
+        </div>
         <div className="hp-info">
           <p className="hp-subject-id">SUBJECT ID: {subjectId}</p>
           <h2 className="hp-name">{name}</h2>

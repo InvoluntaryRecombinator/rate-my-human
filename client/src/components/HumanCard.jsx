@@ -10,7 +10,7 @@ function Stars({ rating }) {
   );
 }
 
-export default function HumanCard({ id, name, bio, knownFor, averageRating, reviewCount, to }) {
+export default function HumanCard({ id, name, bio, knownFor, photoUrl, averageRating, reviewCount, to }) {
   const profilePath = to || `/human/${id}`;
   const subjectId = `S-00${id}`;
   const formId = `FORM-${String(id).padStart(3, '0')}`;
@@ -22,7 +22,13 @@ export default function HumanCard({ id, name, bio, knownFor, averageRating, revi
       </div>
       <div className="human-card-body">
         <div className="human-card-seal-row">
-          <div className="human-avatar">{name?.[0]}</div>
+          <div className={photoUrl ? 'human-avatar human-avatar-photo' : 'human-avatar'}>
+            {photoUrl ? (
+              <img src={photoUrl} alt={`${name} profile`} />
+            ) : (
+              name?.[0]
+            )}
+          </div>
           <div className="human-card-ident">
             <p className="human-subject-id">SUBJECT ID: {subjectId}</p>
             <h2 className="human-name">{name}</h2>

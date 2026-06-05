@@ -12,7 +12,7 @@ export default function Header() {
         </div>
         <div className="header-aside">
           <span className="header-sub">Powered by <span className="spark-glow">S.P.A.R.K.</span></span>
-          <img src="/spark-seal.png" alt="SPARK Seal" className="header-seal" />
+          <img src="/spark-man.png" alt="SPARK Representative" className="header-seal" />
         </div>
       </nav>
     </header>
