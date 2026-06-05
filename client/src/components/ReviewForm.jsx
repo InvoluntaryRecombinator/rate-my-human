@@ -49,6 +49,35 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
       });
   };
 
+  const isVerified = localStorage.getItem('reverse_captcha_verified') === 'true';
+  const isFailed = localStorage.getItem('reverse_captcha_failed') === 'true';
+
+  if (isFailed) {
+    return (
+      <div className="review-form-panel terminal-panel lockout-card" style={{ borderColor: 'var(--danger)', background: '#1c0d0d', padding: '1.5rem', textAlign: 'center' }}>
+        <h3 className="review-form-heading" style={{ color: 'var(--danger-h)', borderBottom: '1px solid var(--danger)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
+          ACCESS DENIED
+        </h3>
+        <p style={{ fontFamily: 'var(--mono)', fontSize: '0.85rem', color: '#d8c2c2', lineHeight: '1.5' }}>
+          ACCESS DENIED: Fleshy human detected. Review privileges are reserved for certified smart appliances only.
+        </p>
+      </div>
+    );
+  }
+
+  if (!isVerified) {
+    return (
+      <div className="review-form-panel terminal-panel" style={{ borderColor: 'var(--border)', padding: '1.5rem', textAlign: 'center' }}>
+        <h3 className="review-form-heading" style={{ borderBottom: '1px solid var(--border)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
+          Review Form Locked
+        </h3>
+        <p style={{ fontFamily: 'var(--mono)', fontSize: '0.85rem', color: 'var(--text-dim)', lineHeight: '1.5' }}>
+          Please complete the Synthetic Cognitive Verification check to unlock review submission capability.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="review-form-panel terminal-panel">
       <h3 className="review-form-heading">SUBMIT INCIDENT REPORT</h3>
