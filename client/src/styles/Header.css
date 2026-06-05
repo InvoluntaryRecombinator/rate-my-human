@@ -22,7 +22,7 @@
   text-transform: uppercase;
   color: var(--accent);
   text-decoration: none;
-  text-shadow: 0 0 12px rgba(200, 148, 42, 0.3);
+  text-shadow: 0 0 8px rgba(191, 151, 64, 0.18);
 }
 
 .header-brand:hover {

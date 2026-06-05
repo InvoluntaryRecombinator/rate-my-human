@@ -99,14 +99,27 @@
 /* --- .paper-form : off-white physical grievance document --- */
 .paper-form {
   position: relative;
-  background:
+  background-color: var(--paper);
+  background-image:
+    /* ruled bureaucratic lines (faint blue-grey) */
     repeating-linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0,
-      rgba(0, 0, 0, 0) 27px,
-      rgba(0, 0, 0, 0.025) 28px
+      0deg,
+      transparent 0,
+      transparent 27px,
+      rgba(43, 58, 82, 0.1) 27px,
+      rgba(43, 58, 82, 0.1) 28px
     ),
-    var(--paper);
+    /* grimy corner shading */
+    radial-gradient(circle at 18% 12%, rgba(0, 0, 0, 0.05), transparent 55%),
+    radial-gradient(circle at 88% 85%, rgba(86, 66, 32, 0.06), transparent 60%),
+    /* fine paper-grain noise */
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.013) 0,
+      rgba(0, 0, 0, 0.013) 1px,
+      transparent 1px,
+      transparent 3px
+    );
   color: var(--paper-ink);
   border: 1px solid var(--paper-border);
   border-radius: 2px;
@@ -115,17 +128,17 @@
   overflow: hidden;
 }
 
-/* --- .paper-form-header : red bureaucratic banner --- */
+/* --- .paper-form-header : muted institutional banner --- */
 .paper-form-header {
-  background: var(--danger);
-  color: #f7efe2;
+  background: var(--form-header);
+  color: var(--form-header-ink);
   font-family: var(--mono);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.4rem 0.75rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.35);
 }
 
 /* --- .data-row / .data-label / .data-value : form table rows --- */
@@ -211,12 +224,12 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--danger);
-  border: 2px solid var(--danger);
+  color: var(--stamp);
+  border: 2px solid var(--stamp);
   border-radius: 4px;
   padding: 0.15rem 0.5rem;
   transform: rotate(-12deg);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 /* ============================================================
@@ -269,7 +282,7 @@ textarea {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  text-shadow: 0 0 18px rgba(200, 148, 42, 0.35);
+  text-shadow: 0 0 10px rgba(191, 151, 64, 0.22);
   margin-bottom: 0.25rem;
 }
 
@@ -402,19 +415,57 @@ textarea {
   color: var(--accent);
 }
 
-/* --- Profile page --- */
+/* --- Profile page : two-column "the file" vs "the terminal" --- */
+.page-profile .profile-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
 .page-profile .profile-layout {
   display: block;
 }
 
+.profile-col-file {
+  min-width: 0;
+}
+
+.profile-col-file .human-profile,
+.profile-col-file .review-card {
+  max-width: none;
+  margin: 0;
+}
+
+.profile-col-terminal {
+  position: sticky;
+  top: 1.5rem;
+  min-width: 0;
+}
+
+.profile-col-terminal .review-form-panel {
+  max-width: none;
+  margin: 0;
+}
+
 .historical-logs {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 .historical-logs h2 {
   color: var(--accent);
   letter-spacing: 0.12em;
   margin-bottom: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .page-profile .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-col-terminal {
+    position: static;
+  }
 }
 
 /* --- Footer --- */

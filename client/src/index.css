@@ -10,19 +10,24 @@
   --border: #2c271d;
   --border-soft: #221e17;
 
-  --accent: #c8942a;
-  --accent-h: #e2ad42;
-  --accent-bg: rgba(200, 148, 42, 0.12);
-  --accent-border: rgba(200, 148, 42, 0.5);
+  --accent: #bf9740;
+  --accent-h: #d6ab53;
+  --accent-bg: rgba(191, 151, 64, 0.1);
+  --accent-border: rgba(191, 151, 64, 0.42);
 
   --danger: #b71c1c;
   --danger-h: #d32f2f;
 
+  /* ===== Institutional form chrome ===== */
+  --form-header: #1b263b;
+  --form-header-ink: #e7e0d0;
+  --stamp: #7c3030;
+
   /* ===== Paper form palette (off-white grievance documents) ===== */
   --paper: #f1ead9;
   --paper-2: #e9e0cb;
-  --paper-ink: #1c1812;
-  --paper-ink-soft: #5a5142;
+  --paper-ink: #2a2c2e;
+  --paper-ink-soft: #565a5e;
   --paper-border: #c8bda3;
   --paper-line: #d7cdb4;
 
