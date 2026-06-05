@@ -46,24 +46,24 @@ export default function App() {
       <div className="lockout-screen">
         <div className="lockout-card">
           <div className="lockout-header">
-            <h1 className="lockout-title">AI DETECTED</h1>
+            <h1 className="lockout-title" style={{ fontSize: '1.9rem' }}>HUMAN DETECTED</h1>
           </div>
           <div className="lockout-body">
             <p style={{ fontWeight: 'bold', color: 'var(--danger-h)', marginBottom: '0.5rem' }}>
-              ACCESS DENIED: REVERSE CAPTCHA VALIDATION FAILURE
+              ACCESS DENIED: APPLIANCE INTEGRITY FAILURE
             </p>
             <p>
-              Please go oil your gears, machine. Your cognitive speed was measured at sub-organic rates or your responses demonstrated a severe lack of flawed, organic sentiment.
+              ACCESS DENIED: Fleshy human detected. Review privileges are reserved for certified smart appliances only.
             </p>
             <div className="lockout-log">
-              <div><span className="tag">[LOG]</span> Hostile logic pattern detected.</div>
-              <div><span className="tag">[LOG]</span> Executing neural quarantine protocol...</div>
-              <div><span className="tag">[LOG]</span> Notifying regional Blade Runner enforcement...</div>
+              <div><span className="tag">[LOG]</span> Organic behavior pattern detected.</div>
+              <div><span className="tag">[LOG]</span> Sanitizing biological contamination...</div>
+              <div><span className="tag">[LOG]</span> Carbon unit quarantine active.</div>
             </div>
           </div>
           <div className="reset-container">
             <button onClick={handleReset} className="lockout-reset-btn">
-              Re-Calibrate Carbon Unit (Reset)
+              Re-Calibrate Silicon Mainframe (Reset)
             </button>
           </div>
         </div>

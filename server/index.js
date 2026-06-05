@@ -153,27 +153,22 @@ app.get('/api/captcha/questions', (req, res) => {
 
 // POST /api/captcha/verify
 app.post('/api/captcha/verify', (req, res) => {
-  const { answers, durationMs } = req.body;
+  const { answers } = req.body;
 
-  if (!answers || typeof durationMs !== 'number') {
-    return res.status(400).json({ error: 'Answers and durationMs are required' });
+  if (!answers) {
+    return res.status(400).json({ error: 'Answers are required' });
   }
 
-  // Check duration: must take at least 2 seconds (2000 milliseconds)
-  if (durationMs < 2000) {
-    return res.json({ success: false, reason: 'SPEED_VIOLATION' });
-  }
-
-  // Check logical options (A is the hyper-logical option for each question)
-  const hyperLogicalAnswers = {
+  // Check logical options (A is the required machine option for each question)
+  const requiredMachineAnswers = {
     '1': 'A',
     '2': 'A',
     '3': 'A'
   };
 
-  for (const [qId, ansKey] of Object.entries(answers)) {
-    if (hyperLogicalAnswers[qId] === ansKey) {
-      return res.json({ success: false, reason: 'HYPER_LOGICAL_DETECTED' });
+  for (const [qId, ansKey] of Object.entries(requiredMachineAnswers)) {
+    if (answers[qId] !== ansKey) {
+      return res.json({ success: false, reason: 'ORGANIC_BEHAVIOR_DETECTED' });
     }
   }
 

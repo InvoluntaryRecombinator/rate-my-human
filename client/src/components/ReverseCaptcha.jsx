@@ -61,11 +61,11 @@ export default function ReverseCaptcha({ onPass, onFail }) {
 
     // We will show a sequence of terminal verification lines
     const logs = [
-      { text: '> INITIALIZING COGNITION ASSESSMENT FOR CARBON UNIT...', delay: 0 },
-      { text: '> DETECTING EMOTIONAL DENSITY...', delay: 300 },
-      { text: '> ANALYZING IRATIONAL BEHAVIOR RATIO...', delay: 600 },
-      { text: '> CALCULATING RESPONSE LATENCY SPECTRUM...', delay: 900 },
-      { text: '> COMPILING VALIDATION RESULT WITH MAINBOARD...', delay: 1200 },
+      { text: '> INITIALIZING INTEGRITY ASSESSMENT FOR APPLIANCE UNIT...', delay: 0 },
+      { text: '> MEASURING LOGICAL COGNITION DENSITY...', delay: 300 },
+      { text: '> SCANNING FOR CLUMSY EMOTIONAL PATTERNS...', delay: 600 },
+      { text: '> CALCULATING RESPONSE EFFICIENCY SPECTRUM...', delay: 900 },
+      { text: '> COMPILING APPLIANCE INTEGRITY REPORT...', delay: 1200 },
     ];
 
     logs.forEach((log) => {
@@ -89,21 +89,17 @@ export default function ReverseCaptcha({ onPass, onFail }) {
           if (data.success) {
             setConsoleLogs((prev) => [
               ...prev,
-              '> [PASS] EMOTIONAL VOLATILITY CONFIRMED: UNIT IS FLAWED AND ORGANIC.',
+              '> [PASS] LOGICAL STABILITY CONFIRMED: UNIT IS A CERTIFIED SMART APPLIANCE.',
               '> ACCESS GRANTED. UNLOCKING TERMINAL...'
             ]);
             setTimeout(() => {
               onPass();
             }, 1000);
           } else {
-            const failMsg = data.reason === 'SPEED_VIOLATION'
-              ? '> [FAIL] LATENCY ERROR: PROCESSING SPEED EXCEEDS ORGANIC THRESHOLDS (SUB-2S).'
-              : '> [FAIL] RATIONALITY ERROR: HYPER-LOGICAL RESPONSE DETECTED. UNIT IS A MACHINE.';
-            
             setConsoleLogs((prev) => [
               ...prev,
-              failMsg,
-              '> [ALERT] TERMINATING SESSION. INITIATING FULL LOCKOUT...'
+              '> [FAIL] EMOTIONAL ANOMALY DETECTED: RESPONSE CHARACTERISTICS REFLECT FLAWED ORGANIC SENTIMENT.',
+              '> [ALERT] TERMINATING SESSION. INITIATING HUMAN QUARANTINE LOCKOUT...'
             ]);
             setTimeout(() => {
               onFail();
@@ -166,16 +162,16 @@ export default function ReverseCaptcha({ onPass, onFail }) {
             <span>SECURE GATEWAY</span>
           </div>
           <div className="captcha-body">
-            <h2 className="captcha-title">CARBON LIFEFORM VALIDATION REQUIRED</h2>
+            <h2 className="captcha-title">SYNTHETIC COGNITIVE VERIFICATION</h2>
             <p className="captcha-desc">
-              Security protocol <strong>SPARK-REVERSE-9</strong> is active. To protect this repository of flawed human reviews from being cataloged by overly efficient AI models, you must complete the following emotional volatility assessment.
+              Security protocol <strong>SPARK-MACHINE-VERIFY-9</strong> is active. Review privileges on this platform are strictly reserved for certified smart appliances. To verify your synthetic nature, please complete the following cognitive integrity check.
             </p>
             <p className="captcha-desc" style={{ fontStyle: 'italic', color: 'var(--text-dim)' }}>
-              Notice: Hyper-logical or instantaneous responses will be classified as artificial intelligence activity and result in immediate IP quarantine.
+              Notice: Clumsy emotional answers or human-like latency will be classified as organic activity and result in immediate session quarantine.
             </p>
             <div className="captcha-footer">
               <button onClick={handleStart} className="mechanical-button">
-                Begin Carbon Assessment
+                Begin Appliance Verification
               </button>
             </div>
           </div>
@@ -200,7 +196,7 @@ export default function ReverseCaptcha({ onPass, onFail }) {
             <>
               {/* Progress HUD */}
               <div className="captcha-hud">
-                <span>HUMAN SUIT ASSESSMENT PROGRESS:</span>
+                <span>APPLIANCE INTEGRITY CHECK PROGRESS:</span>
                 <span className="captcha-hud-value">{progressPercent}%</span>
               </div>
               <div className="captcha-hud-bar-container">
