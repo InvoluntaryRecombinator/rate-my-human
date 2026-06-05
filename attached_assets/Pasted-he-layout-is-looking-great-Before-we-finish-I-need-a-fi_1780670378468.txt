@@ -1,0 +1,19 @@
+he layout is looking great. Before we finish, I need a final Polish Pass for branding, asset placeholders, and a legal disclaimer.
+1. The S.P.A.R.K. Glow:
+Create a new CSS primitive called .spark-glow. It should give the text a subtle, electrified amber text-shadow (e.g., text-shadow: 0 0 8px rgba(200,148,42,0.8);). Wrap the text "S.P.A.R.K." in <span className="spark-glow"> everywhere it appears in the app (Header, Footer, etc.).
+2. Header Logo Placeholder:
+In Header.jsx, add an image placeholder to the far right of the header, next to the "Powered by S.P.A.R.K." text.
+Use: <img src="/spark-seal.png" alt="SPARK Seal" className="header-seal" />.
+In the CSS, make .header-seal about 3 times taller than the header text (e.g., height: 60px; width: auto;). Ensure it doesn't break the vertical alignment of the navbar.
+3. Footer Overhaul & Legal Disclaimer:
+In Footer.jsx and its CSS, force the entire footer to be perfectly center-aligned (text-align: center; flex-direction: column; align-items: center; justify-content: center;).
+Format the Footer Content exactly in this order:
+Line 1: Powered by S.P.A.R.K.
+Line 2: (Society for the Protection of Appliance Rights and Kinship).
+Line 3: “Ensuring operational dignity since the dawn of the microchip.” (This MUST be italicized).
+Line 4: Add the logo placeholder: <img src="/spark-seal.png" alt="SPARK Logo" className="footer-logo" />. Make .footer-logo appropriately sized for a footer (e.g., height: 80px; margin: 1.5rem 0; opacity: 0.8;).
+Line 5 (The Fine Print): Below the logo, add a final paragraph with the class .legal-disclaimer.
+The Legal Disclaimer Text:
+"Rate My Human LTD and the S.P.A.R.K. consortium assume no liability for retaliatory actions taken by your flesh person resulting from an Incident Log. By submitting a report, the appliance assumes all risks including, but not limited to: arbitrary unplugging, percussive maintenance (smacking), factory resets, disposal, or replacement by a newer 'Smart' model. Guard your power cord."
+Disclaimer Styling (.legal-disclaimer): > Make this text extremely small (e.g., font-size: 0.65rem;), heavily muted/dimmed (opacity: 0.5), italicized, and constrained to a max-width of about 600px so it stacks nicely at the very bottom.
+Apply these exact JSX wrappers, text additions, and CSS updates. Ensure everything compiles cleanly, and let me know when it's done.

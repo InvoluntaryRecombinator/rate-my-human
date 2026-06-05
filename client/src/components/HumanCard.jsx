@@ -52,7 +52,7 @@ export default function HumanCard({ id, name, bio, knownFor, averageRating, revi
 
         <div className="human-card-action">
           <Link className="human-card-btn mechanical-button" to={profilePath}>ACCESS RECORD</Link>
-          <span className="stamp">S.P.A.R.K.</span>
+          <span className="stamp"><span className="spark-glow">S.P.A.R.K.</span></span>
         </div>
       </div>
     </div>

@@ -10,7 +10,10 @@ export default function Header() {
           <NavLink to="/directory">directory</NavLink>
           <NavLink to="/human/new">+ add human</NavLink>
         </div>
-        <span className="header-sub">Powered by S.P.A.R.K.</span>
+        <div className="header-aside">
+          <span className="header-sub">Powered by <span className="spark-glow">S.P.A.R.K.</span></span>
+          <img src="/spark-seal.png" alt="SPARK Seal" className="header-seal" />
+        </div>
       </nav>
     </header>
   );
