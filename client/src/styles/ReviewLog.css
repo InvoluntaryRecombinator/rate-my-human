@@ -10,15 +10,24 @@
 .rc-header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 0.75rem;
+}
+
+.rc-avatar {
+  flex: 0 0 auto;
 }
 
 .rc-meta {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+}
+
+.rc-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .rc-appliance-name {
@@ -28,6 +37,11 @@
 }
 
 .rc-appliance-type {
+  font-size: 0.78rem;
+  color: #6b6375;
+}
+
+.rc-date {
   font-size: 0.78rem;
   color: #6b6375;
 }
@@ -78,6 +92,7 @@
   }
 
   .rc-appliance-type,
+  .rc-date,
   .rc-body {
     color: #9ca3af;
   }

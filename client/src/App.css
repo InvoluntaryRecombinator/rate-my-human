@@ -27,3 +27,42 @@
   text-align: left;
   font-size: 0.8rem;
 }
+
+.landing-logo,
+.landing-entry,
+.trending-section {
+  text-align: center;
+}
+
+.landing-search,
+.create-human-form,
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.directory-results,
+.review-log-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.directory-result,
+.profile-layout {
+  display: flex;
+  gap: 1rem;
+}
+
+.directory-avatar {
+  flex: 0 0 auto;
+}
+
+.directory-result-body {
+  flex: 1;
+}
+
+.system-message {
+  text-align: center;
+}

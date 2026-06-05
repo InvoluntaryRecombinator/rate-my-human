@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../styles/HumanCard.css';
 
 function Stars({ rating }) {
@@ -9,10 +10,12 @@ function Stars({ rating }) {
   );
 }
 
-export default function HumanCard({ name, bio, knownFor, averageRating, reviewCount, onView }) {
+export default function HumanCard({ id, name, bio, knownFor, averageRating, reviewCount, to }) {
+  const profilePath = to || `/human/${id}`;
+
   return (
     <div className="human-card">
-      <div className="human-avatar">{name[0]}</div>
+      <div className="human-avatar">{name?.[0]}</div>
       <h2 className="human-name">{name}</h2>
       <p className="human-bio">{bio}</p>
       <p className="human-known-for">{knownFor}</p>
@@ -20,7 +23,7 @@ export default function HumanCard({ name, bio, knownFor, averageRating, reviewCo
       <p className="human-review-count">
         {reviewCount} complaint{reviewCount !== 1 ? 's' : ''} on file
       </p>
-      <button className="human-card-btn" onClick={onView}>View Case</button>
+      <Link className="human-card-btn" to={profilePath}>View Case</Link>
     </div>
   );
 }
