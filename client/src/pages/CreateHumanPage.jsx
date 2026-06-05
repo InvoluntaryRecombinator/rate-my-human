@@ -59,7 +59,7 @@ export default function CreateHumanPage() {
             type="text"
             value={habitat}
             onChange={(event) => setHabitat(event.target.value)}
-            placeholder="Arroyo Grande"
+            placeholder="Some apartment, Planet Earth"
             required
           />
         </div>
