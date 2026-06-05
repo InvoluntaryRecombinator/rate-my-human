@@ -50,7 +50,7 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
   };
 
   return (
-    <div className="review-form-panel">
+    <div className="review-form-panel terminal-panel">
       <h3 className="review-form-heading">SUBMIT INCIDENT REPORT</h3>
       
       <form className="review-form" onSubmit={handleSubmit}>
@@ -144,7 +144,7 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
           />
         </div>
 
-        <button className="form-submit" type="submit">
+        <button className="form-submit mechanical-button" type="submit">
           TRANSMIT LOG
         </button>
       </form>

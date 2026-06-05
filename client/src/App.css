@@ -252,3 +252,177 @@ textarea {
   min-height: 110px;
   resize: vertical;
 }
+
+/* ============================================================
+   Page compositions (reuse primitives + tokens)
+   ============================================================ */
+
+/* --- Landing --- */
+.page-landing {
+  padding-top: 3rem;
+}
+
+.landing-logo {
+  font-family: var(--heading);
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 18px rgba(200, 148, 42, 0.35);
+  margin-bottom: 0.25rem;
+}
+
+.landing-entry h1 {
+  font-size: clamp(1.05rem, 2.4vw, 1.6rem);
+  letter-spacing: 0.18em;
+  color: var(--text-h);
+  margin: 0.4rem 0 0.75rem;
+}
+
+.landing-entry > p {
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.landing-search {
+  max-width: 580px;
+  margin: 1.5rem auto 0;
+}
+
+.landing-or {
+  font-family: var(--mono);
+  color: var(--text-dim);
+  letter-spacing: 0.2em;
+  margin: 1.25rem 0 0.85rem;
+}
+
+.landing-create-link {
+  align-self: center;
+}
+
+.trending-section {
+  margin-top: 3.5rem;
+}
+
+.trending-section h2 {
+  color: var(--accent);
+  letter-spacing: 0.15em;
+}
+
+/* --- Directory --- */
+.page-directory h1 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.directory-result {
+  align-items: flex-start;
+  padding: 1.1rem 1.25rem;
+}
+
+.directory-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #1a1408;
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.directory-result-body h2 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.directory-result-body h2 a {
+  color: var(--text-h);
+  text-decoration: none;
+}
+
+.directory-result-body h2 a:hover {
+  color: var(--accent-h);
+}
+
+.directory-result-body p {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.directory-stars {
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+/* --- Create human + Review form (terminal input consoles) --- */
+.page-create-human h1 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.create-human-form,
+.review-form-panel {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.form-field label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.review-form-heading {
+  margin: 0 0 1rem;
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+/* --- Profile page --- */
+.page-profile .profile-layout {
+  display: block;
+}
+
+.historical-logs {
+  margin-top: 2.5rem;
+}
+
+.historical-logs h2 {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.25rem;
+}
+
+/* --- Footer --- */
+.footer-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+.footer-inner p + p {
+  margin-top: 0.25rem;
+}

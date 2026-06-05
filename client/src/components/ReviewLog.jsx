@@ -23,20 +23,25 @@ export default function ReviewLog({ applianceName, applianceType, rating, title,
   const logDate = formatLogDate(createdAt);
 
   return (
-    <div className="review-card">
-      <div className="rc-header">
-        <div className="rc-avatar">{applianceName?.[0]}</div>
-        <div className="rc-meta">
-          <span className="rc-appliance-name">{applianceName} | Mood: {mood || 'Unspecified'}</span>
-          <span className="rc-appliance-type">{applianceType}</span>
+    <div className="review-card paper-form">
+      <div className="rc-form-header paper-form-header">
+        INCIDENT LOG — {applianceType}
+      </div>
+      <div className="rc-body-wrap">
+        <div className="rc-header">
+          <div className="rc-avatar">{applianceName?.[0]}</div>
+          <div className="rc-meta">
+            <span className="rc-appliance-name">{applianceName} | Mood: {mood || 'Unspecified'}</span>
+            <span className="rc-appliance-type">{applianceType}</span>
+          </div>
         </div>
+        <div className="rc-rating-row">
+          <Stars rating={rating} />
+          {logDate && <span className="rc-date">{logDate}</span>}
+        </div>
+        <h3 className="rc-title">{title}</h3>
+        <p className="rc-body">"{body}"</p>
       </div>
-      <div className="rc-rating-row">
-        <Stars rating={rating} />
-        {logDate && <span className="rc-date">{logDate}</span>}
-      </div>
-      <h3 className="rc-title">{title}</h3>
-      <p className="rc-body">"{body}"</p>
     </div>
   );
 }

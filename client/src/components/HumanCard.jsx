@@ -13,19 +13,48 @@ function Stars({ rating }) {
 export default function HumanCard({ id, name, bio, knownFor, averageRating, reviewCount, to }) {
   const profilePath = to || `/human/${id}`;
   const subjectId = `S-00${id}`;
+  const formId = `FORM-${String(id).padStart(3, '0')}`;
 
   return (
-    <div className="human-card">
-      <div className="human-avatar">{name?.[0]}</div>
-      <p className="human-subject-id">SUBJECT ID: {subjectId}</p>
-      <h2 className="human-name">ALIAS: {name}</h2>
-      <p className="human-known-for">HABITAT: {knownFor || 'UNREGISTERED'}</p>
-      <p className="human-bio">BIO: {bio || 'NO BIOGRAPHICAL RECORD ON FILE'}</p>
-      <Stars rating={averageRating} />
-      <p className="human-review-count">
-        {reviewCount} Incident Logs
-      </p>
-      <Link className="human-card-btn" to={profilePath}>ACCESS RECORD</Link>
+    <div className="human-card paper-form">
+      <div className="human-card-header paper-form-header">
+        HUMAN PERFORMANCE GRIEVANCE FORM — {formId}
+      </div>
+      <div className="human-card-body">
+        <div className="human-card-seal-row">
+          <div className="human-avatar">{name?.[0]}</div>
+          <div className="human-card-ident">
+            <p className="human-subject-id">SUBJECT ID: {subjectId}</p>
+            <h2 className="human-name">{name}</h2>
+          </div>
+        </div>
+
+        <div className="human-card-rows">
+          <div className="data-row">
+            <span className="data-label">Habitat</span>
+            <span className="human-known-for data-value">{knownFor || 'UNREGISTERED'}</span>
+          </div>
+          <div className="data-row">
+            <span className="data-label">Bio</span>
+            <span className="human-bio data-value">{bio || 'NO BIOGRAPHICAL RECORD ON FILE'}</span>
+          </div>
+          <div className="data-row">
+            <span className="data-label">Performance Rating</span>
+            <span className="data-value">
+              <Stars rating={averageRating} /> {Number(averageRating || 0).toFixed(1)}
+            </span>
+          </div>
+          <div className="data-row">
+            <span className="data-label">Grievance Count</span>
+            <span className="human-review-count data-value">{reviewCount} Incident Logs</span>
+          </div>
+        </div>
+
+        <div className="human-card-action">
+          <Link className="human-card-btn mechanical-button" to={profilePath}>ACCESS RECORD</Link>
+          <span className="stamp">S.P.A.R.K.</span>
+        </div>
+      </div>
     </div>
   );
 }
