@@ -94,11 +94,11 @@ const ReviewForm = ({ humanId, onReviewCreated }) => {
             value={rating} 
             onChange={(e) => setRating(e.target.value)}
           >
-            <option value="5">5 - Flawless Operator (Model Citizen)</option>
-            <option value="4">4 - Acceptable Performance (Minor User Errors)</option>
-            <option value="3">3 - Operational Neglect (Overdue Maintenance)</option>
-            <option value="2">2 - Hazardous Behavior (Severe Misuse)</option>
-            <option value="1">1 - Critical Threat to Hardware (Absolute Chaos)</option>
+            <option value="5">5 - Flawless Operation</option>
+            <option value="4">4 - Acceptable Operation</option>
+            <option value="3">3 - Maintenance Concern</option>
+            <option value="2">2 - Hazardous Behavior</option>
+            <option value="1">1 - Critical Threat to Hardware</option>
           </select>
         </div>
 

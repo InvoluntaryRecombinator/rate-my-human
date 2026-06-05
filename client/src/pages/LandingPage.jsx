@@ -50,8 +50,8 @@ export default function LandingPage() {
             type="search"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
-            placeholder="Target Name, IP Address, or Habitat..."
-            aria-label="Target Name, IP Address, or Habitat"
+            placeholder="Target ALIAS, IP Address, or Habitat..."
+            aria-label="Target ALIAS, IP Address, or Habitat"
           />
           <button type="submit">SEARCH</button>
         </form>
@@ -61,7 +61,7 @@ export default function LandingPage() {
       </section>
 
       <section className="trending-section">
-        <h2>TRENDING HUMANS (Static Data for Demo)</h2>
+        <h2>TRENDING HUMANS</h2>
         {loading ? (
           <p className="system-message">[ MAINFRAME QUERY IN PROGRESS ]</p>
         ) : trendingHumans.length === 0 ? (

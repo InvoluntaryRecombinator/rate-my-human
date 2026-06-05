@@ -50,9 +50,7 @@ export default function DirectoryPage() {
 
   return (
     <section className="page page-directory">
-      <h1>
-        RESULTS FOR: {query ? query.toUpperCase() : 'ALL REGISTERED HUMANS'} (Sorted by: Most Active Logs)
-      </h1>
+      <h1>{query ? `SEARCH INDEX: ${query.toUpperCase()}` : 'REGISTERED SUBJECT DIRECTORY'}</h1>
 
       {loading ? (
         <p className="system-message">[ MAINFRAME QUERY IN PROGRESS ]</p>
@@ -67,13 +65,14 @@ export default function DirectoryPage() {
               </Link>
               <div className="directory-result-body">
                 <h2>
-                  <Link to={`/human/${human.id}`}>{index + 1}. {human.name}</Link>
+                  <Link to={`/human/${human.id}`}>{index + 1}. SUBJECT ID: S-00{human.id}</Link>
                 </h2>
+                <p>ALIAS: {human.name}</p>
                 <p>
                   <Stars rating={human.averageRating} /> {Number(human.averageRating || 0).toFixed(1)} ({human.reviewCount} Incident Logs)
                 </p>
-                <p>Habitat: {human.bio || 'UNREGISTERED'}</p>
-                <p>💬 Toaster_04: "Promptly removes toast. Minimal crumb..."</p>
+                <p>HABITAT: {human.knownFor || 'UNREGISTERED'}</p>
+                <p>BIO: {human.bio || 'NO BIOGRAPHICAL RECORD ON FILE'}</p>
               </div>
             </article>
           ))}

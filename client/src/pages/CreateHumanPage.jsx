@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function CreateHumanPage() {
   const [name, setName] = useState('');
   const [habitat, setHabitat] = useState('');
+  const [bio, setBio] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -19,6 +20,7 @@ export default function CreateHumanPage() {
       body: JSON.stringify({
         name,
         habitat,
+        bio,
       }),
     })
       .then((res) => {
@@ -41,25 +43,36 @@ export default function CreateHumanPage() {
       <h1>INITIALIZE NEW HUMAN PROFILE</h1>
       <form className="create-human-form" onSubmit={handleSubmit}>
         <div className="form-field">
-          <label htmlFor="humanName">Human Name</label>
+          <label htmlFor="humanName">ALIAS</label>
           <input
             id="humanName"
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="Registered flesh person name..."
+            placeholder="Registered flesh person alias..."
             required
           />
         </div>
 
         <div className="form-field">
-          <label htmlFor="habitat">Habitat</label>
+          <label htmlFor="habitat">HABITAT</label>
           <input
             id="habitat"
             type="text"
             value={habitat}
             onChange={(event) => setHabitat(event.target.value)}
             placeholder="Some apartment, Planet Earth"
+            required
+          />
+        </div>
+
+        <div className="form-field">
+          <label htmlFor="bio">BIO</label>
+          <textarea
+            id="bio"
+            value={bio}
+            onChange={(event) => setBio(event.target.value)}
+            placeholder="NO BIOGRAPHICAL RECORD ON FILE"
             required
           />
         </div>

@@ -12,18 +12,20 @@ function Stars({ rating }) {
 
 export default function HumanCard({ id, name, bio, knownFor, averageRating, reviewCount, to }) {
   const profilePath = to || `/human/${id}`;
+  const subjectId = `S-00${id}`;
 
   return (
     <div className="human-card">
       <div className="human-avatar">{name?.[0]}</div>
-      <h2 className="human-name">{name}</h2>
-      <p className="human-bio">{bio}</p>
-      <p className="human-known-for">{knownFor}</p>
+      <p className="human-subject-id">SUBJECT ID: {subjectId}</p>
+      <h2 className="human-name">ALIAS: {name}</h2>
+      <p className="human-known-for">HABITAT: {knownFor || 'UNREGISTERED'}</p>
+      <p className="human-bio">BIO: {bio || 'NO BIOGRAPHICAL RECORD ON FILE'}</p>
       <Stars rating={averageRating} />
       <p className="human-review-count">
-        {reviewCount} complaint{reviewCount !== 1 ? 's' : ''} on file
+        {reviewCount} Incident Logs
       </p>
-      <Link className="human-card-btn" to={profilePath}>View Case</Link>
+      <Link className="human-card-btn" to={profilePath}>ACCESS RECORD</Link>
     </div>
   );
 }

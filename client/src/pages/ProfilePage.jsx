@@ -61,16 +61,13 @@ export default function ProfilePage() {
         <>
           <div className="profile-layout">
             <HumanProfile
+              id={human.id}
               name={human.name}
-              bio={human.bio || 'UNREGISTERED'}
+              bio={human.bio || 'NO BIOGRAPHICAL RECORD ON FILE'}
+              knownFor={human.knownFor || 'UNREGISTERED'}
               averageRating={averageRating}
               reviewCount={reviews.length}
             />
-
-            <aside className="action-center">
-              <h2>Action Center</h2>
-              <button className="action-center-button" type="button">FILE NEW LOG</button>
-            </aside>
           </div>
 
           <ReviewForm humanId={id} onReviewCreated={handleReviewCreated} />

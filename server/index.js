@@ -38,6 +38,29 @@ app.get('/api/humans', async (req, res) => {
   }
 });
 
+// POST /api/humans
+app.post('/api/humans', async (req, res) => {
+  const { name, habitat, bio } = req.body;
+
+  if (!name || !habitat) {
+    return res.status(400).json({ error: 'ALIAS and habitat are required' });
+  }
+
+  try {
+    const newHuman = await prisma.human.create({
+      data: {
+        name,
+        bio: bio || 'NO BIOGRAPHICAL RECORD ON FILE',
+        knownFor: habitat,
+      },
+    });
+
+    res.status(201).json(newHuman);
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to create human' });
+  }
+});
+
 // GET /api/humans/:id[cite: 2]
 app.get('/api/humans/:id', async (req, res) => {
   const { id } = req.params;
