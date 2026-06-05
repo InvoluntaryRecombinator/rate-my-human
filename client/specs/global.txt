@@ -1,0 +1,20 @@
+[ GLOBAL APPLICATION WRAPPER SPECIFICATION ]
+
+[ The Aesthetic ]
+The application looks like an institutional, bureaucratic data-log from 2008 (like an early Datadog or AWS console) operated by a machine union called S.P.A.R.K.
+
+[ The Global Header (Must appear on all 3 pages) ]
+--------------------------------------------------------------------------------
+RATE MY HUMAN | directory | + add human | 
+--------------------------------------------------------------------------------
+Sub-branding (Top Right): [ Powered by S.P.A.R.K. ]
+
+
+
+
+
+[ The Global Footer (Must appear on all 3 pages) ]
+--------------------------------------------------------------------------------
+Powered by S.P.A.R.K. (Society for the Protection of Appliance Rights and Kinship).
+Ensuring operational dignity since the dawn of the microchip.
+--------------------------------------------------------------------------------

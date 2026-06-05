@@ -9,7 +9,7 @@ function Stars({ rating }) {
   );
 }
 
-export default function ReviewCard({ applianceName, applianceType, rating, title, body, mood }) {
+export default function ReviewLog({ applianceName, applianceType, rating, title, body, mood }) {
   return (
     <div className="review-card">
       <div className="rc-header">

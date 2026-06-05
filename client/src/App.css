@@ -1,7 +1,29 @@
+.app-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.page {
+  padding: 2rem 1rem;
+  text-align: left;
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
   padding: 2rem 1rem;
+}
+
+.app-footer {
+  border-top: 1px solid #e5e4e7;
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.8rem;
 }

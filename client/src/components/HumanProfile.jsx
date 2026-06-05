@@ -1,4 +1,4 @@
-import ReviewCard from './ReviewCard';
+import ReviewLog from './ReviewLog';
 import '../styles/HumanProfile.css';
 
 function Stars({ rating }) {
@@ -45,7 +45,7 @@ export default function HumanProfile({ name, bio, knownFor, averageRating, revie
         ) : (
           <div className="hp-reviews-list">
             {reviews.map((review, i) => (
-              <ReviewCard key={i} {...review} />
+              <ReviewLog key={i} {...review} />
             ))}
           </div>
         )}

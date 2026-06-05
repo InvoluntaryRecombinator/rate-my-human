@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // ✨ Updated: Brought in useEffect
+import { useState, useEffect } from 'react'; // ✨ Updated: Brought in useEffect
 
 const ReviewForm = () => {
   // 1. Form Data State Hooks

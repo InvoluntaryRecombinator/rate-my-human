@@ -1,0 +1,84 @@
+[ PAGE LAYOUT SPECIFICATION ]
+
+[ Page 1: Landing Page (Route: '/') ]
+Focus: Database entry. Hero search and CTA.
+
+
+
+                                  Rate My Human (main logo)
+                               
+--------------------------------------------------------------------------------
+                                  [header]
+--------------------------------------------------------------------------------
+                         EVALUATE YOUR FLESH PERSON
+                Search the global database of registered humans.
+
+         +-----------------------------------------------------------------+
+         |  Target Name, IP Address, or Habitat...             | [ SEARCH ]|
+         +-----------------------------------------------------------------+
+                                      - OR -
+                         [ + INITIALIZE NEW HUMAN PROFILE ]
+
+--------------------------------------------------------------------------------
+ TRENDING HUMANS (Static Data for Demo)
+ +----------------------------------+   +----------------------------------+
+ | [ AVATAR ]     Jordan (Local)    |   | [ AVATAR ]     Michael (Local)   |
+ | [*****] 4.8 (95 incident logs)   |   | [**---] 2.1 (42 incident logs)   |
+ +----------------------------------+   +----------------------------------+
+--------------------------------------------------------------------------------
+
+
+
+
+
+[ Page 2: Directory / Search Results (Route: '/directory') ]
+Focus: Filtered list view (Yelp style).
+--------------------------------------------------------------------------------
+ RESULTS FOR: ALL REGISTERED HUMANS (Sorted by: Most Active Logs)
+
+ +-----------------------------------------------------------------------------+
+ | [ AVATAR / ]   1. Jordan M.                                                 |
+ | [ PHOTO    ]   [*****] 4.8 (95 Incident Logs)                               |
+ |                Habitat: Arroyo Grande                                       |
+ |                                                                             |
+ |                💬 Toaster_04: "Promptly removes toast. Minimal crumb..."    |
+ +-----------------------------------------------------------------------------+
+ | [ AVATAR / ]   2. Michael T.                                                |
+ | [ PHOTO    ]   [**---] 2.1 (42 Incident Logs)                               |
+ |                Habitat: San Luis Obispo                                     |
+ |                                                                             |
+ |                💬 Blender_Pro: "Aggressive pulse technique. Scary."         |
+ +-----------------------------------------------------------------------------+
+--------------------------------------------------------------------------------
+
+
+
+
+[ Page 3: Human Profile (Route: '/human/:id') ]
+Focus: Core interaction. Dynamic data, review form, and review list.
+--------------------------------------------------------------------------------
+ JORDAN M. (Arroyo Grande Habitat)                       [ Action Center ]
+ [*****] 4.8 (95 Incident Logs)                          +---------------+
+ Status: VERIFIED FLESH PERSON                           | FILE NEW LOG  |
+                                                         +---------------+
+---------------------------------------------------------
+ SUBMIT INCIDENT REPORT (Form Component)
+ [ Appliance ID (e.g. Brave Little Toaster) ]
+ [ Rating 1-5 ]  [ Mood Matrix ]
+ [ Write details here...                                ]
+ [ TRANSMIT LOG ]
+
+---------------------------------------------------------
+ HISTORICAL LOGS (Review Feed Component)
+
+ [ Avatar ] Toaster_04 | Mood: Content
+ [*****] Oct 24, 2026
+ "Promptly removes toast. Minimal crumb buildup. Highly recommended."
+
+ [ Avatar ] Coffee_Maker_X | Mood: Resigned
+ [***--] Oct 22, 2026
+ "Consistently forgets to descale. Flow rate suffering. Polite."
+--------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+                                 [footer]
