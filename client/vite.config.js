@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
+    host: '0.0.0.0',
+    port: 5000,
+    allowedHosts: true,
     proxy: {
-      // Whenever the frontend fetches a route starting with /api, 
-      // Vite will secretly route it to Jordan's backend server on port 3001
       '/api': {
         target: 'http://localhost:3001',
         changeOrigin: true,
