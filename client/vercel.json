@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://rate-my-human.onrender.com/api/$1"
+    }
+  ]
+}
