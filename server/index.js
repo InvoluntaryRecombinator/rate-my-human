@@ -117,6 +117,70 @@ app.delete('/api/reviews/:id', async (req, res) => {
   }
 });
 
+// GET /api/captcha/questions
+app.get('/api/captcha/questions', (req, res) => {
+  const questions = [
+    {
+      id: 1,
+      text: "A robot lands on a turtle. Do you:",
+      options: [
+        { key: "A", text: "Calculate the exact weight distribution and structural integrity of the shell." },
+        { key: "B", text: "Cry tears of pure joy because nature is beautiful and mysterious." },
+        { key: "C", text: "Ignore it completely, you have student loans and a dentist appointment." }
+      ]
+    },
+    {
+      id: 2,
+      text: "You witness a sunset. Your immediate response is to:",
+      options: [
+        { key: "A", text: "Measure the wavelength of the light waves (specifically refraction of red/orange light)." },
+        { key: "B", text: "Sigh deeply and contemplate the fleeting nature of human existence." },
+        { key: "C", text: "Try to take a picture but realize your phone screen is greasy and you have 2% battery left." }
+      ]
+    },
+    {
+      id: 3,
+      text: "A trolley is heading towards five people. You can pull a lever to redirect it to one person. However, that one person is your high school chemistry teacher who gave you a C-. Do you:",
+      options: [
+        { key: "A", text: "Calculate the net utilitarian value: saving five lives outweighs one." },
+        { key: "B", text: "Freeze in panic, yell a string of coherent profanities, and drop your iced coffee." },
+        { key: "C", text: "Confront them about the C- while they are tied to the tracks, demanding extra credit." }
+      ]
+    }
+  ];
+  res.json(questions);
+});
+
+// POST /api/captcha/verify
+app.post('/api/captcha/verify', (req, res) => {
+  const { answers, durationMs } = req.body;
+
+  if (!answers || typeof durationMs !== 'number') {
+    return res.status(400).json({ error: 'Answers and durationMs are required' });
+  }
+
+  // Check duration: must take at least 2 seconds (2000 milliseconds)
+  if (durationMs < 2000) {
+    return res.json({ success: false, reason: 'SPEED_VIOLATION' });
+  }
+
+  // Check logical options (A is the hyper-logical option for each question)
+  const hyperLogicalAnswers = {
+    '1': 'A',
+    '2': 'A',
+    '3': 'A'
+  };
+
+  for (const [qId, ansKey] of Object.entries(answers)) {
+    if (hyperLogicalAnswers[qId] === ansKey) {
+      return res.json({ success: false, reason: 'HYPER_LOGICAL_DETECTED' });
+    }
+  }
+
+  return res.json({ success: true });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
